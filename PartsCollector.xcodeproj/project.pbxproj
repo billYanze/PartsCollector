@@ -19,6 +19,7 @@
 		C00F1E4D1CCB9CE80096AF6C /* NewPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F1E4C1CCB9CE80096AF6C /* NewPartViewController.swift */; };
 		C00F1E4F1CCC321A0096AF6C /* PartDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F1E4E1CCC321A0096AF6C /* PartDetailViewController.swift */; };
 		C00F1E531CCC54DE0096AF6C /* SelectedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F1E521CCC54DE0096AF6C /* SelectedTableViewController.swift */; };
+		C00F1E571CCF36990096AF6C /* TypeCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F1E561CCF36990096AF6C /* TypeCollector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C00F1E4C1CCB9CE80096AF6C /* NewPartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPartViewController.swift; sourceTree = "<group>"; };
 		C00F1E4E1CCC321A0096AF6C /* PartDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartDetailViewController.swift; sourceTree = "<group>"; };
 		C00F1E521CCC54DE0096AF6C /* SelectedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedTableViewController.swift; sourceTree = "<group>"; };
+		C00F1E561CCF36990096AF6C /* TypeCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeCollector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			children = (
 				C00F1E481CCB77FB0096AF6C /* PartCollector.swift */,
 				C00F1E4A1CCB78600096AF6C /* Part.swift */,
+				C00F1E561CCF36990096AF6C /* TypeCollector.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				C00F1E491CCB77FB0096AF6C /* PartCollector.swift in Sources */,
 				C00F1E531CCC54DE0096AF6C /* SelectedTableViewController.swift in Sources */,
 				C00F1E471CCB708B0096AF6C /* PartsViewController.swift in Sources */,
+				C00F1E571CCF36990096AF6C /* TypeCollector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

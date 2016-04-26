@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 class Part{
-    var name:String?
-    var manufacture:String?
-    var img:UIImage?
-    var type:String?
+    var name:String!
+    var info:String!
+    var price:Int!
+    var type:String!
     
-    init(partName:String,partManufacture:String,partImage:UIImage){
+    init(partName:String,partInfo:String,partPrice:Int,partType:String){
         self.name = partName
-        self.manufacture = partManufacture
-        self.img = partImage
-        self.type = ""
+        self.info = partInfo
+        self.price = partPrice
+        self.type = partType
     }
     
 }

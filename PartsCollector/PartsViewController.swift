@@ -46,12 +46,12 @@ class PartsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PartCell")! as UITableViewCell;
-        let part = partsCollector.get_part(indexPath.row)
-        if let image = part.img{
+        let part = partsCollector.get_part_by_index(indexPath.row)
+        if let image = partsCollector.get_image_by_part(part){
             cell.imageView?.image = image
         }
         cell.textLabel?.text = part.name
-        cell.detailTextLabel?.text = part.manufacture
+        cell.detailTextLabel?.text = part.info
         return cell;
     }
     
@@ -73,14 +73,14 @@ class PartsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func add_to_selected(selectedPart: Part) {
-        self.partsCollector.select_part(selectedPart)
+        self.partsCollector.select_a_part(selectedPart)
     }
     
     func get_selected_parts() -> [Part] {
         return self.partsCollector.get_selected_parts()
     }
     func save_selected_parts(parts: [Part]) {
-        self.partsCollector.partsSelected = parts
+        self.partsCollector
         updateView()
     }
     

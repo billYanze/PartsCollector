@@ -24,83 +24,101 @@ func fileInDocumentsDirectory(filename: String) -> String {
 class PartCollector{
     var parts = [Part]()
     var partsSelected = [Part]()
-    var index = 0
-    var infoDictionary=NSMutableDictionary()
-    var selectedInfoDictionary=NSMutableDictionary()
+    var infoDictionary = NSMutableDictionary()
+    var selectedInfoDictionary = NSMutableDictionary()
+    init(){
+        load_parts()
+    }
     func get_size()->Int{
         return parts.count
     }
     
-    func add_part(newPart:Part)->Void{
-        self.parts.append(newPart)
-        save_part(newPart)
+    func get_selected_size()->Int{
+        return partsSelected.count
     }
     
-    func save_part(part:Part)->Void{
-        if let partImg = part.img{
-            let imagePath = fileInDocumentsDirectory(String(index))
-            let success = saveImage(partImg,path: imagePath)
-            if(!success){
-                print("error")
-            }
-            let key = String(index)
-            let value = NSArray(array:[part.name!,part.manufacture!,part.type!])
-            infoDictionary.setObject(value, forKey: key)
-            index+=1
+    func add_part(PartName name:String,PartInfo info:String,PartPrice price:Int,PartType type:String,PartImage image:UIImage)->Void{
+        let newPart = Part(partName: name,partInfo: info,partPrice: price,partType: type)
+        save_image_using_name(image,name: name)
+        parts.append(newPart)
+        update_partList_in_disk(false)
+    }
+    
+    
+    func save_image_using_name(image:UIImage,name:String){
+        let imagePath = fileInDocumentsDirectory(name)
+        let success = saveImage(image, path: imagePath)
+        if(!success){
+            print("error")
         }
-        //print(infoDictionary)
-        infoDictionary.writeToFile(fileInDocumentsDirectory("info"), atomically: true)
+    }
+    
+    func get_part_by_index(index:Int)->Part{
+        return parts[index]
+    }
+    
+    func get_image_by_part(part:Part)->UIImage?{
+        let img = UIImage(contentsOfFile: fileInDocumentsDirectory(part.name))
+        return img
+    }
+    
+    func update_partList_in_disk(is_selected_list:Bool){
+        infoDictionary.removeAllObjects()
+        if is_selected_list{
+            for part in partsSelected{
+                let key = part.name
+                let value = NSArray(array:[part.info,part.price,part.type])
+                infoDictionary.setObject(value, forKey: key)
+            }
+        }
+        if is_selected_list{
+            for part in parts{
+                let key = part.name
+                let value = NSArray(array:[part.info,part.price,part.type])
+                infoDictionary.setObject(value, forKey: key)
+            }
+        }
+        if is_selected_list{
+            infoDictionary.writeToFile(fileInDocumentsDirectory("info"), atomically: true)
+        }
+        else{
+            infoDictionary.writeToFile(fileInDocumentsDirectory("info_selected"), atomically: true)
+        }
+    }
+    
+    func select_a_part(part:Part){
+        partsSelected.append(part)
+        update_partList_in_disk(true)
+    }
+    
+    func deselect_a_part(partUnselected:Part){
+        partsSelected.removeAtIndex(partsSelected.indexOf({$0.name == partUnselected.name})!)
+    }
+    
+    func get_selected_parts()->[Part]{
+        return partsSelected
     }
     
     func load_parts()->Void{
         
         if let info = NSMutableDictionary(contentsOfFile: fileInDocumentsDirectory("info")){
-            self.infoDictionary = info
-            //print("info is \(info)")
             for element in info{
-                let key = element.key as! String
-                let value = element.value as! NSArray
-                let img = UIImage(contentsOfFile: fileInDocumentsDirectory(key))
-                let part = Part(partName: value[0] as! String, partManufacture: value[1] as! String, partImage: img!)
-                part.type = (value[2] as! String)
+                let name = element.key as! String
+                let values = element.value as! NSArray
+                let part = Part(partName: name, partInfo: values[0] as! String, partPrice: values[1] as! Int, partType: values[2] as! String)
                 self.parts.append(part)
-                index += 1
             }
         }
         
-        if let info = NSMutableDictionary(contentsOfFile: fileInDocumentsDirectory("SelectedInfo")){
-            self.selectedInfoDictionary = info
-            //print("info is \(info)")
+        if let info = NSMutableDictionary(contentsOfFile: fileInDocumentsDirectory("info_selected")){
             for element in info{
-                let key = element.key as! String
-                let part = self.parts[Int(key)!]
+                let name = element.key as! String
+                let values = element.value as! NSArray
+                let part = Part(partName: name, partInfo: values[0] as! String, partPrice: values[1] as! Int, partType: values[2] as! String)
                 self.partsSelected.append(part)
             }
         }
         
-    }
-    
-    func save_selected_info(){
-        for part in partsSelected{
-            let key = String(index)
-            let value = NSArray(array:[part.name!,part.manufacture!,part.type!])
-            selectedInfoDictionary.setObject(value, forKey: key)
-        }
-        selectedInfoDictionary.writeToFile(fileInDocumentsDirectory("SelectedInfo"), atomically: true)
-    }
-    
-    func get_part(index:Int)->Part{
-        return parts[index]
-    }
-    
-    func select_part(selected_part:Part){
-        //print("adding to selected\n")
-        self.partsSelected.append(selected_part)
-        self.save_selected_info()
-    }
-    
-    func get_selected_parts()->[Part]{
-        return self.partsSelected
     }
     
     //save image helper

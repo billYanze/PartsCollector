@@ -10,6 +10,7 @@ import UIKit
 
 protocol PartDetailViewControllerDelegate:class{
     func add_to_selected(selectedPart:Part)
+    func img_to_display()->UIImage
 }
 
 
@@ -29,9 +30,9 @@ class PartDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        imageView.image = partToDisplay.img
+        imageView.image = self.delegate?.img_to_display()
         nameLabel.text = partToDisplay.name
-        manuLabel.text = partToDisplay.manufacture
+        manuLabel.text = partToDisplay.info
     }
     
     @IBAction func addToSelectedButtonTapped(sender: AnyObject) {

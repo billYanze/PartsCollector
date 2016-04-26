@@ -10,7 +10,9 @@ import UIKit
 
 protocol SelectedTableViewControllerDataSource:class{
     func get_selected_parts()->[Part]
+    func get_img_by_part(part:Part)
     func save_selected_parts(parts:[Part])->Void
+    func deselect_a_part(part:Part)->Void
 }
 
 class SelectedTableViewController: UITableViewController {
@@ -44,10 +46,9 @@ class SelectedTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        cell.imageView?.image = selectedParts?[indexPath.row].img
+        cell.imageView?.image = self.dataSource?.get_img_by_part(self.selectedParts![indexPath.row])
         cell.textLabel?.text = selectedParts?[indexPath.row].name
         cell.detailTextLabel?.text = selectedParts?[indexPath.row].manufacture
-
         return cell
     }
     
@@ -68,7 +69,7 @@ class SelectedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             selectedParts?.removeAtIndex(indexPath.row)
-            self.dataSource?.save_selected_parts(selectedParts!)
+            self.dataSource?.deselect_a_part(selectedParts![indexPath.row])
             self.title = "已选择" + "(" + String(selectedParts!.count) + ")"
             self.tableView.reloadData()
             // handle delete (by removing the data from your array and updating the tableview)
