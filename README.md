@@ -12,13 +12,13 @@ It's available in iPhone's App Store, for IOS 8.0+
 
 ## How to use the tool
 
-1. Click 'add' buttom to upload a new photo by either taking new picture or selecting from photo library. 
+1. Click 'add' buttom to upload a new photo by either taking a new pictures or selecting one from photo library. 
 
-2. The app will ask user enter information about the part, including price, make, model and etc.
+2. The app will ask user to enter information about the part, including price, make, model and etc.
 
 3. Select and put the part by into cart by clicking image.
 
-4. Show those images to your suppliers!
+4. Show those images in the cart to your suppliers.
 
 ## Built With
 
