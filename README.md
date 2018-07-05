@@ -1,10 +1,10 @@
 # PartsCollector
 
-An image management tool helps to maintain the part & their images
+PartsCollector is an images management tool helping maintain the parts with their images.
 
 ## Getting Started
 
-This is a tiny tool that helps you to manage your supplement parts, where to add/edit information about those images.
+This is a tiny tool helping you manage your supplement parts inventory and parts information.
 
 ### Prerequisites
 
@@ -12,10 +12,13 @@ It's available in iPhone's App Store, for IOS 8.0+
 
 ## How to use the tool
 
-1.Simply click 'add' buttom to upload a new photo by shooting one or select from photo library. 
-2.You will be asked to enter information about the part, including price, make, model and etc.
-3.Images are selectable, which means you can pick any images in your library and put them into the cart.
-4.Show those images to your supplier for ease!
+1. Click 'add' buttom to upload a new photo by either taking new picture or selecting from photo library. 
+
+2. The app will ask user enter information about the part, including price, make, model and etc.
+
+3. Select and put the part by into cart by clicking image.
+
+4. Show those images to your suppliers!
 
 ## Built With
 
