@@ -12,7 +12,7 @@ It's available in iPhone's App Store, for IOS 8.0+
 
 ## How to use the tool
 
-1. Click 'add' buttom to upload a new photo by either taking a new pictures or selecting one from photo library. 
+1. Click 'add' button to upload a new photo by either taking a new picture or selecting one from photo library. 
 
 2. The app will ask user to enter information about the part, including price, make, model and etc.
 
