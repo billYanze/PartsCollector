@@ -1,22 +1,16 @@
 PartsCollector
 
-PartsCollector is an images management tool that helps maintain widgets with images.
+PartsCollector is an image management tool that helps maintain widgets with 	images.
 
-Getting Started
-This is a tool to help you manage your replenished parts inventory and parts information.
+Getting Started: This is a tool to help you manage replenishment parts inventory 	and parts information.
 
-Prerequisites
-It is available in the iPhone app store for IOS 8.0+.
+Prerequisites: It is available in the iPhone App Store for IOS 8.0+.
 
-How to use the tool
-Click 'add' button to upload a new photo by either taking a new picture or selecting one from photo library.
+How to use the tool: Click the Add button to upload a new photo by taking a new 	photo or selecting one from your photo library. The app will then ask the user to 	enter information about the part, including price, make, model, and more.
 
-The app will ask user to enter information about the part, including price, make, model and etc.
+Click on the image to select and add the part to the cart.
 
-Select by clicking image and place the part by into the shopping cart.
-
-Display the image in the shopping cart to the supplier.
-
+Display images from shopping cart to suppliers.
 Built With
 Swift, XCode
 
